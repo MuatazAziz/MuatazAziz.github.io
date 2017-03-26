@@ -9,10 +9,11 @@
   box-sizing: border-box;
 }
 
-.container
+.container    /*حتى اترك مسافة من الجهتين لكل الصفحة*/
 {
-  width: 920;
+  width: 1100px;
   margin: auto;
+  background: #777b7e
 }
 
 /*1*/
