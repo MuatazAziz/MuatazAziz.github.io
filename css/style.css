@@ -9,11 +9,16 @@
   box-sizing: border-box;
 }
 
+body
+{
+  font-family: Tahoma
+}
+
 .container    /*حتى اترك مسافة من الجهتين لكل الصفحة*/
 {
   width: 1100px;
   margin: auto;
-  background: #777b7e
+  /*background: #777b7e*/
 }
 
 /*1*/
@@ -24,4 +29,54 @@ section.personal
   color: #fff;  /*أبيض*/
   background: url('../images/iloveprogramming.jpg');
   background-size: cover;  /*حتى تاخذ كل المساحة من دون متتكرر*/
+  padding-top: 20px;
+}
+
+/*header          /* هذه الطريقة اذا اريد انزل الهيدر بس من دون الباك كراوند */
+/*{
+  padding-top: 20px;
+}*/
+
+section.personal header
+{
+  background: #777b7e
+}
+
+/*حتى اللوغو ياخذ نص الصفحة والبوتومس تاخذ النص الثاني*/
+section.personal .logo
+{
+  width:: 50%;
+  float: left;
+  font-size: 1.5em;
+  font-weight: bold;
+  /*text-transform: uppercase;*/
+}
+
+section.personal nav
+{
+  width: 50%;
+  float: right;;
+}
+
+section.personal nav ul li
+{
+  display: inline-block;     /*حتى تكون البوتومس بسطر واحد*/
+  padding-left: 15px;;       /*المسافة/التباعد بين البوتومس*/
+}
+
+section.personal nav ul li a
+{
+  color: #fff;                            /*لون ابوتمس/اللنكات أبيض*/
+  /*text-decoration: none;*/              /*يزيل الخط من تحت البوتومب*/
+  font-size: 14px;
+}
+
+section.personal .clear                   /*ازالة تأثير الفلوت على الدف اللي كلاسة كلير*/
+{
+  clear: both;
+}
+
+section.personal .welcome
+{
+  margin-top: 20%;
 }
