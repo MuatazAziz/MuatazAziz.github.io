@@ -117,5 +117,26 @@ section.about
 {
   width: 100%;
   height: 600px;
-  padding: 50px 0 50px 0;
+  padding: 50px 0 50px 0;       /*top right bottom left*/
+}
+
+section.about div.before ,
+section.about div.joined ,
+section.about div.after
+{
+  width: 30%;                   /* It should be 33%, but I need alittle bt for margin so I put 30% */
+  float: left;                  /*حتى يصير صف يم صف */
+  margin-left: 2%               /* حتى يصير فراغ بين واحد واحد */ /* This margin will not apply on "div.before" because we specified/overwrited it's value below */
+}
+
+section.about div.before
+{
+  margin-left: 0%              /* حتى ليزحف للبمين ويبقى على حافة حدودة */
+}
+
+section.about div.before img ,
+section.about div.joined img ,
+section.about div.after img
+{
+  width: 100%;   /*الدف ماخذ30% فالصورة الي داخل الدف خل تاخذ 100% حتى تملأ الدف ولتعبر*/
 }
