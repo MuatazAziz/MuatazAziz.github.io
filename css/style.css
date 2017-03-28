@@ -18,8 +18,8 @@ body
 {
   width: 1100px;
   margin: auto;
-  /*background: #777b7e*/
 }
+
 
 /*1*/
 section.personal
@@ -37,9 +37,9 @@ section.personal
   padding-top: 20px;
 }*/
 
-section.personal header
-{
-  background: #777b7e
+section .container header{
+  background: #777b7e;
+  padding: 5px 15px;
 }
 
 /*حتى اللوغو ياخذ نص الصفحة والبوتومس تاخذ النص الثاني*/
@@ -76,7 +76,36 @@ section.personal .clear                   /*ازالة تأثير الفلوت �
   clear: both;
 }
 
+/*clearfix defined in bootstrap so writing just clearfix as a class in the header is enough but without bootstrap I must the code below*/
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
 section.personal .welcome
 {
-  margin-top: 20%;
+  margin-top: 25%;
+}
+
+section.personal div.welcome p:first-child
+{
+  font-size: 3em;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+section.personal .welcome p span         /*حتى اخلي :) تفتر من احط الماوس على البي والسبان*/
+{
+  transition: all 0.5s ease-in-out;
+}
+
+section.personal div.welcome p:last-child:hover span
+{
+/* transition: all 0.5s ease-in-out; */      /*اذا اريد اخلي :) تفتر من احط الماوس على السبان فقط*/
+  display: inline-block;
+  transform: rotate(360deg)
 }
