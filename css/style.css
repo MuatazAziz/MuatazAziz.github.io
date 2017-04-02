@@ -126,7 +126,8 @@ section.about div.after
 {
   width: 30%;                   /* It should be 33%, but I need alittle bt for margin so I put 30% */
   float: left;                  /*حتى يصير صف يم صف */
-  margin-left: 2%               /* حتى يصير فراغ بين واحد واحد */ /* This margin will not apply on "div.before" because we specified/overwrited it's value below */
+  margin-left: 3%;              /* حتى يصير فراغ بين واحد واحد */ /* This margin will not apply on "div.before" because we specified/overwrited it's value below */
+  font-family: sans-serif;
 }
 
 section.about div.before
@@ -140,3 +141,52 @@ section.about div.after img
 {
   width: 100%;   /*الدف ماخذ30% فالصورة الي داخل الدف خل تاخذ 100% حتى تملأ الدف ولتعبر*/
 }
+
+section.about h2.title
+{
+  font-size: 3em;
+  margin-bottom: 4%;
+  color: #888;
+  font-weight: bold;
+}
+
+section.about div.before p
+{
+  margin-bottom: 7%           /* المجال بين براكراف واخر */
+}
+
+section.about div.before p:nth-of-type(1) span   /* p is not the first child and this the way to select specific selector like p */
+/*section.about div.before p span*/              /* another way like the line above */
+{
+  font-weight: bold;
+}
+
+section.about div.before h3,
+section.about div.joined h3,
+section.about div.after h3
+{
+  margin-top: 7%;
+  margin-bottom: 7%;
+  color: #666;
+}
+
+section.about div.before p,
+section.about div.joined p,
+section.about div.after p
+{
+  margin-bottom: 7%;
+  color: #999;
+}
+
+section.about div.before p:nth-of-type(4) a:hover
+{
+  color: blue;
+}
+
+/* Another way of selection like above reasult */
+/*
+.before > p > a:hover
+{
+  color: blue;
+}
+*/
