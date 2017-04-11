@@ -1,6 +1,6 @@
 /*section personal*/
 
-* , *:after, *:before                    /*     * means 'all element'      */
+ * , *:after, *:before
 {
   margin: 0;
   padding: 0;
@@ -12,7 +12,7 @@
 body
 {
   font-family: Tahoma;
-  height: 2000px;
+  height: 4000px;
 }
 
 .container    /*حتى اترك مسافة من الجهتين لكل الصفحة*/
@@ -21,25 +21,65 @@ body
   margin: auto;
 }
 
-
-/*1*/
-section.personal
+section.personal:before  /* CSS pseudo-element from ggogle to give opacity just for background*/
 {
-  width: 100%;
-  height: 600px;
-  color: #fff;  /*أبيض*/
-  background: url('../images/iloveprogramming.jpg');
-  background-size: cover;  /*حتى تاخذ كل المساحة من دون متتكرر*/
+    width: 100%;
+    height: 600px;
+    color: #fff;
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.9;
+    background-image: url('../images/cover1.jpg');
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+header          /* هذه الطريقة اذا اريد انزل الهيدر بس من دون الباك كراوند */
+{
   padding-top: 20px;
 }
 
-/*header          /* هذه الطريقة اذا اريد انزل الهيدر بس من دون الباك كراوند */
-/*{
-  padding-top: 20px;
-}*/
+.clearfix.header          /*Sticky Navbar */
+{
+  display: none;
+  width: 79.35%;
+  height: 45px;
+  /*background: #777b7e;*/
+/*______________*/
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f0b7a1+0,8c3310+50,752201+51,bf6e4e+100;Brown+Gloss */
+background: #f0b7a1; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #f0b7a1 0%, #8c3310 50%, #752201 51%, #bf6e4e 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  #f0b7a1 0%,#8c3310 50%,#752201 51%,#bf6e4e 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  #f0b7a1 0%,#8c3310 50%,#752201 51%,#bf6e4e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0b7a1', endColorstr='#bf6e4e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+/*______________*/
+  position: fixed;
+  top: 0;
+  /*margin-left: 0;*/
+  /*padding: 5px 15px;*/
+  z-index: 9999;
+}
 
 section .container header{
-  background: #777b7e;
+  /*background: #777b7e;*/
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f0b7a1+0,8c3310+50,752201+51,bf6e4e+100;Brown+Gloss */
+background: #f0b7a1; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #f0b7a1 0%, #8c3310 50%, #752201 51%, #bf6e4e 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  #f0b7a1 0%,#8c3310 50%,#752201 51%,#bf6e4e 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  #f0b7a1 0%,#8c3310 50%,#752201 51%,#bf6e4e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0b7a1', endColorstr='#bf6e4e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   padding: 5px 15px;
 }
 
@@ -49,6 +89,21 @@ section.personal .logo
   width:: 50%;
   float: left;
   font-size: 1.5em;
+  animation: 3s multicolor;
+}
+@keyframes multicolor {
+  0% {
+      color: #000;
+  }
+  33% {
+      color: #FF0000;
+  }
+  66% {
+      color:  #9932CC;
+  }
+  100% {
+      color: #FFF;
+  }
   font-weight: bold;
   /*text-transform: uppercase;*/
 }
@@ -89,7 +144,9 @@ section.personal .clear                   /*ازالة تأثير الفلوت �
 
 section.personal .welcome
 {
-  margin-top: 25%;
+  margin-top: 0%;
+  color: white;
+  font-weight: bold;
 }
 
 section.personal div.welcome p:first-child
@@ -102,6 +159,8 @@ section.personal div.welcome p:first-child
 section.personal .welcome p span         /*حتى اخلي :) تفتر من احط الماوس على البي والسبان*/
 {
   transition: all 0.5s ease-in-out;
+  color: white;
+  font-weight: bold;
 }
 
 section.personal div.welcome p:last-child:hover span
@@ -116,8 +175,8 @@ section.personal div.welcome p:last-child:hover span
 section.about
 {
   width: 100%;
-  height: 600px;
-  padding: 50px 0 50px 0;       /*top right bottom left*/
+  height: 870px;
+  padding: 150px 0 50px 0;       /*top right bottom left*/
 }
 
 section.about div.before ,
@@ -191,9 +250,9 @@ section.about div.before p:nth-of-type(4) a:hover
 }
 */
 
-section.about div.before img:hover ,
-section.about div.joined img:hover ,
-section.about div.after img:hover
+section.about div.before div:hover img ,
+section.about div.joined div:hover img ,
+section.about div.after div:hover img
 {
   transform: scale(1.2);      /* من اخلي الماوس على الصورة تبر */
 }
@@ -217,7 +276,7 @@ section.about div.before div div.overlay ,
 section.about div.joined div div.overlay ,
 section.about div.after div div.overlay
 {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
   position: absolute;
   top: 0;
   left: 0;
@@ -232,3 +291,297 @@ section.about div.after > div:hover div.overlay
 {
   display: block;
 }
+/*_______________________________________________________*/
+
+/*Folio*/
+section.folio
+{
+  width:100%;
+  background: url('../images/slide-7-fw.jpg');
+  height: 500px;
+  background-size: cover;
+  background-attachment: fixed;   /*فيكة تنزل والصورة شكلها ثابت */
+  text-align: center;             /* احط الشغل في نص الالصفحة */
+  color: #fff;                    /*أبيض*/
+  line-height: 1.7;               /* المسافة بين خط وخط*/
+}
+
+section.folio div.folio_part
+{
+  padding-top: 15%;
+}
+
+section.folio div.folio_part span
+{
+  font-size: 13px;
+  font-style: italic;
+}
+
+section.folio div.folio_part button
+{
+  margin-top: 50px;
+  width: 200px;                   /* اعطاء عرض للبوتونس*/
+  padding: 15px;                  /*اعطاء ارتفاع للبوتونس*/
+  background: none;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size:18px;
+  cursor: pointer;                 /*تغيير شكل المؤشر من يصير فوق البوتونس*/
+  transition: all 0.5s ease-in-out;
+}
+
+section.folio div.folio_part p.two  /* لايعرض بشكل تلقائي هذا البي مالم اضغط على البوتون الثاني*/
+{
+  display: none;
+}
+
+section.folio div.folio_part button:hover
+{
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#searchTerm
+{
+  width: 80%;
+}
+/*_______________________________________________________*/
+
+/*section soloution*/
+section.solution
+{
+  width: 100%;
+  height: 450px;
+  padding: 70px 0 70px 0;
+}
+
+section.solution div.tailor
+{
+  width: 50%;
+  float: left;
+  padding-right: 55px;
+}
+
+section.solution div.tailor h2
+{
+  font-size: 2.5em;
+  margin-bottom: 3%; 
+}
+
+section.solution div.tailor p:nth-of-type(1)
+{
+  color: #555;
+  font-size: 20px;
+  margin-bottom: 2%;
+}
+
+section.solution div.tailor p:nth-of-type(2)
+{
+  color: #999;
+  line-height: 1.5;
+  font-size: 15px;
+  margin-bottom: 2%;
+}
+
+
+section.solution div.acordion
+{
+  width: 50%;
+  float: left;
+}
+
+section.solution div.acordion h3
+{
+  /*______________*/
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f0b7a1+0,8c3310+50,752201+51,bf6e4e+100;Brown+Gloss */
+background: #f0b7a1; /* Old browsers */
+background: -moz-linear-gradient(-45deg,  #f0b7a1 0%, #8c3310 50%, #752201 51%, #bf6e4e 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  #f0b7a1 0%,#8c3310 50%,#752201 51%,#bf6e4e 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  #f0b7a1 0%,#8c3310 50%,#752201 51%,#bf6e4e 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0b7a1', endColorstr='#bf6e4e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+/*______________*/
+  color: #fff;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+section.solution div.acordion p
+{
+  background: #fce9e3;
+  color: #555;
+  display: none;
+}
+/*_______________________________________________________*/
+
+
+/*section study*/
+section.study
+{
+  width: 100%;
+  height: 500px;
+  background: #e62739;
+}
+
+section.study div.app
+{
+  width: 50%;
+  float: left;
+  height: 500px;
+  /*padding-right: 50px;*/
+}
+
+section.study div.app h2
+{
+  padding-top: 15%;
+  color: white;
+}
+
+section.study div.app p
+{
+  margin-top: 2%;
+  font-size: 16px;
+  color: white;
+  line-height: 1.5;
+  margin-bottom: 7%;
+}
+
+
+section.study div.download
+{
+  width: 50%;
+  float: right;
+  background: url('../images/pexels-photo-92904.jpg');
+  height: 500px;
+}
+
+section.study div.download div.number
+{
+  width: 50%;
+  background: green;
+  height: 200px;
+  margin: 25% auto;
+  color: white;
+}
+
+section.study div.download div.number div.left
+{
+  width: 50%;
+  float: left;
+}
+
+section.study div.download div.number div.right
+{
+  width: 50%;
+  float: right;
+}
+
+section.study div.download div.number div.left p ,
+section.study div.download div.number div.right p
+{
+  margin-bottom: 5%;
+  font-size: 2em;
+}
+/*_______________________________________________________*/
+
+/*recent*/
+
+section.recent
+{
+  width: 100%;
+  height: 700px;
+  /*padding: 100px 0 50px 0*/
+}
+
+section.recent div.center
+{
+  text-align: center;
+}
+
+section.recent div.center h2
+{
+  font-size: 3em;
+  margin-bottom: 1%;
+}
+
+section.recent div.center nav span
+{
+  color: #999;
+  font-size: 20px;
+  padding-left: 25px;
+  margin-bottom: 5%;
+  display: inline-block;
+}
+
+section.recent div.All_images .left
+{
+  width: 50%;
+  float: left;
+}
+
+section.recent div.All_images .left .div1
+{
+  width: 50%;
+  float: left;
+}
+
+section.recent div.All_images .left .div1 img
+{
+  width: 100%;
+}
+
+section.recent div.All_images .left .div2
+{
+  width: 50%;
+  float: left;
+}
+
+section.recent div.All_images .left .div2 img
+{
+  width: 100%;
+}
+
+section.recent div.All_images .right
+{
+  width: 50%;
+  float: left;
+}
+
+section.recent div.All_images .right .open
+{
+  width: 100%;
+}
+
+section.recent div.All_images .right .open img
+{
+  height: 478px;
+  width: 100%;
+}
+
+section.recent div.All_images .right .close
+{
+  width: 100%;
+  display: flex;
+}
+
+section.recent div.All_images .right .close > div
+{
+  width: 50%;
+}
+
+section.recent div.All_images .right .close > div:nth-of-type(1) img
+{
+  width: 100%;
+  float: left;
+}
+
+section.recent div.All_images .right .close > div:nth-of-type(2) img
+{
+  width: 50%;
+  float: right;
+}
+
+
+/*.mix
+{
+  display: none;
+}*/
