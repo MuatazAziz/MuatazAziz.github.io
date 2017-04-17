@@ -214,10 +214,10 @@ console.log("ORGANIZE YOUR CODE");
 // __________________________
 
 
-$("html").niceScroll({
-	cursorcolor: "brown",
-	cursoropacitymin: 0.5
-});
+// $("html").niceScroll({
+// 	cursorcolor: "brown",
+// 	cursoropacitymin: 0.5
+// });
 
 
 
