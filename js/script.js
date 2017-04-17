@@ -1,3 +1,9 @@
+// youtube
+var url="https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCh9hQ6K3jTCyBFk68WZtNoxob_3PW_kn4&maxResults=3&q="
+var nextPage=''
+var firstResult=true;
+// _______________
+
 $(document).ready(function (){
 
 // $(function(){
@@ -88,71 +94,70 @@ $(document).ready(function (){
 
 
 
-runSearch();
+	runSearch();
 
-function runSearch(){
+	function runSearch(){
         $("#searchTerm").keypress(function(e){
-          if(e.keyCode==13){
-            getInput();
-            clearInput();
-          }
-          else {
-                  $("#search").on("click", getInput())
-          }
-}
-                                  )}
+        	if ( e.keyCode === 13 ) {
+            	getInput();
+            	clearInput();
+          	} else {
+                $("#search").on("click", getInput())
+          	}
+		})
+	}
 
- function getInput(){
-                  var searchTerm = $("#searchTerm").val();
-          request(searchTerm);
-        }
+	function getInput(){
+		var searchTerm = $("#searchTerm").val();
+        request(searchTerm);
+    }
 
-function clearInput(){
-  var searchTerm = $("#searchTerm").val();
-  searchTerm = ("");
-}
+	function clearInput(){
+  		var searchTerm = $("#searchTerm").val();
+  		searchTerm = (""); // searchTerm.html('');
+	}
 
-function request(searchTerm){
-            var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+ searchTerm +"&format=json&callback=?";
-              $.ajax({
-                  url: url,
-                  type: 'GET',
-                  dataType: "json",
+	function request(searchTerm){
+        var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+ searchTerm +"&format=json&callback=?";
+		$.ajax({
+            url: url,
+			type: 'GET',
+			dataType: "json",
             success: function(data) {
-              for(var i=0; i<data[1].length; i++){
-                $("#output").prepend("<div><div class='well'><a href="+data[3][i]+"><h2>" + data[1][i]+ "</h2>" + "<p>" + data[2][i] + "</p></a></div></div>");
-}
-              }
-              }
-                    ) };
+            	for (var i=0; i<data[1].length; i++) {
+                	$("#output").prepend("<div><div class='well'><a href="+data[3][i]+"><h2>" + data[1][i]+ "</h2>" + "<p>" + data[2][i] + "</p></a></div></div>");
+				}
+            }
+        });
+	};
 
 
 
 
 // ------------------
 
+function initiateBouncing() {
+	var myName = "Muataz Aziz";
 
-var myName = "Muataz Aziz";
+	var red = [0, 100, 63];
+	var orange = [40, 100, 60];
+	var green = [75, 100, 40];
+	var blue = [196, 77, 55];
+	var purple = [280, 50, 60];
+	var letterColors = [red, orange, green, blue, purple];
 
-var red = [0, 100, 63];
-var orange = [40, 100, 60];
-var green = [75, 100, 40];
-var blue = [196, 77, 55];
-var purple = [280, 50, 60];
-var letterColors = [red, orange, green, blue, purple];
+	drawName(myName, letterColors);
 
-drawName(myName, letterColors);
+	if (10 < 3) {
+	    bubbleShape = 'square';
+	} else {
+	    bubbleShape = 'circle';
+	}
 
-if(10 < 3)
-{
-    bubbleShape = 'square';
+	bounceBubbles();
 }
-else
-{
-    bubbleShape = 'circle';
-}
 
-bounceBubbles();
+initiateBouncing();
 // __________________________
 
 
@@ -174,24 +179,170 @@ bounceBubbles();
 //   return colList[i];
 // }​
 
-});
 // __________________________
 
 
-$(".one").css('display','block');
+	$(".one").css('display','block');
 
-$('div.acordion h3').click(function(){
-	$(this).next().slideToggle();
-	$("div.acordion p").not($(this).next()).slideUp();
+	$('div.acordion h3').click(function(){
+		$(this).next().slideToggle();
+		$("div.acordion p").not($(this).next()).slideUp();
+	});
 // __________________________
 
+console.log("ORGANIZE YOUR CODE");
 
-$('.download').click(function(){
-	$('.timer').countTo();
-});
+
+	$('.download').click(function(e){
+		// console.log(e)
+		$('.timer').countTo();
+	});
 // __________________________
 	
 
-	// $('.All_images').mixItUp();
+	$('.All_images').mixItUp();
+// __________________________
+
+
+$("html").niceScroll({
+	cursorcolor: "brown",
+	cursoropacitymin: 0.5
+});
+
+
+
+//---------------------
+// youtube
+function bindLinkClick(){
+	$('#searchLink').click(function(e){
+		firstResult=true;
+		e.preventDefault();
+		fetchData();
+		firstResult=false;
+	})
+}
+function fetchData(){
+	$('.loading').fadeIn();
+	var qry=$('#txtSearch').val();
+	if (nextPage!==undefined&&nextPage.length!==0)
+	{
+		qry+='&pageToken='+nextPage;
+	}
+	$.ajax({
+		url: url+qry,
+		type: 'get',
+		datatype:  'jsonp',
+		success: function(data){
+			$('.loading').fadeOut();
+			$('#loadMore').fadeIn();
+			
+			nextPage=data.nextPageToken;
+			showResult(data)
+		},
+		fail:showError
+	})
+}
+function showResult(data){
+	$('#header').fadeIn();
+	if(firstResult)
+	{
+		$('#result').html(formatData(data));
+	}
+	else{
+		$('#result').append(formatData(data));
+	}
+
+	$('html, body').animate({ scrollTop: $("#loadMore").offset().top }, 2000);
+
+}
+function formatData(data){
+
+	var html=''
+	
+	$.each(data.items,function(i,res){
+		html+='<div class="row">'+
+		'<div class="col-md-4">'+res.snippet.title+'</div>'+
+		'<div class="col-md-4">'+res.snippet.description+'</div>'+
+		'<div class="col-md-4"><a href="https://www.youtube.com/watch?v='+res.id.videoId+'" target="_blank" title="Watch"> <img class="img-thumbnail re-sized" src='+res.snippet.thumbnails.default.url+'></a></div>'+
+		//uncomment this line and comment the previous line if you want to show the video in the same page
+		// '<div class="col-md-4"><iframe width="130" height="100" src="https://www.youtube.com/embed/'+res.id.videoId+'"></iframe></div>'
+		'</div>'
+
+	})
+	return html;
+}
+function showError(){
+	$('.loading').fadeOut();
+	alert(Error);
+}
+function bindLoadMoreClick(){
+	$('#loadMore').click(function(e){
+		e.preventDefault();
+		fetchData();
+	})
+}
+
+// _________
+
+var url="https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCh9hQ6K3jTCyBFk68WZtNoxob_3PW_kn4&maxResults=1"
+var nextPage;
+var prePage;
+$(document).ready(function(){
+	makeAJaxRequest();
+	bindNextClick();
+	bindPreClick();
+})
+function bindNextClick(){
+	$('#next').click(function(e){
+		e.preventDefault();
+		url="https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCh9hQ6K3jTCyBFk68WZtNoxob_3PW_kn4&maxResults=1"
+		url+="&pageToken="+nextPage;
+		makeAJaxRequest();
+
+	})
+}
+function bindPreClick(){
+	$('#pre').click(function(e){
+		e.preventDefault();
+		url="https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCh9hQ6K3jTCyBFk68WZtNoxob_3PW_kn4&maxResults=1"
+		url+="&pageToken="+prePage;
+		makeAJaxRequest();
+	})
+}
+function makeAJaxRequest(){
+	$.ajax({
+		url: url,
+		type: 'get',
+		dataType: 'json',
+		success: function(data){
+			console.log(data);
+			nextPage=data.nextPageToken;
+			prePage=data.prevPageToken;
+			if(nextPage !== undefined)
+			{
+				$('#next').show();
+			}
+			else{
+				$('#next').hide();
+			}
+			if(prePage !== undefined)
+			{
+				$('#pre').show();
+			}
+			else{
+				$('#pre').hide();
+			}
+			console.log(nextPage,prePage);
+
+			var videoId=data.items[0].id.videoId;
+			$('#video').attr('src','https://www.youtube.com/embed/'+videoId)
+		},
+		fail: function(){alert('Error!')}
+	})
+}
+
+
+
+
 
 });

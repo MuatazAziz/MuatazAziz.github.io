@@ -12,7 +12,6 @@
 body
 {
   font-family: Tahoma;
-  height: 4000px;
 }
 
 .container    /*حتى اترك مسافة من الجهتين لكل الصفحة*/
@@ -117,7 +116,7 @@ section.personal nav
 section.personal nav ul li
 {
   display: inline-block;     /*حتى تكون البوتومس بسطر واحد*/
-  padding-left: 15px;;       /*المسافة/التباعد بين البوتومس*/
+  padding-left: 15px;       /*المسافة/التباعد بين البوتومس*/
 }
 
 section.personal nav ul li a
@@ -125,7 +124,14 @@ section.personal nav ul li a
   color: #fff;                            /*لون ابوتمس/اللنكات أبيض*/
   /*text-decoration: none;*/              /*يزيل الخط من تحت البوتومب*/
   font-size: 14px;
+  transition: all 0.4s ease-in-out;
 }
+
+section.personal nav ul li a:hover
+{
+  color: #888;
+}
+
 
 section.personal .clear                   /*ازالة تأثير الفلوت على الدف اللي كلاسة كلير*/
 {
@@ -317,6 +323,19 @@ section.folio div.folio_part span
   font-style: italic;
 }
 
+section.folio div.folio_part div.sblings
+{
+  font-size: 18px;
+}
+
+section.folio div.folio_part h4.title
+{
+  font-size: 24px;
+  font-weight: bold;
+  
+}
+
+
 section.folio div.folio_part button
 {
   margin-top: 50px;
@@ -445,10 +464,11 @@ section.study div.app p
   margin-bottom: 7%;
 }
 
-
 section.study div.download
 {
   width: 50%;
+  position: absolute;
+  right: 0;
   float: right;
   background: url('../images/pexels-photo-92904.jpg');
   height: 500px;
@@ -457,10 +477,11 @@ section.study div.download
 section.study div.download div.number
 {
   width: 50%;
-  background: green;
+  background: rgba(237, 180, 157, 0.7);
+  font-weight: bold;
   height: 200px;
   margin: 25% auto;
-  color: white;
+  color: #e62739;
 }
 
 section.study div.download div.number div.left
@@ -495,6 +516,7 @@ section.recent
 section.recent div.center
 {
   text-align: center;
+  padding-top: 100px;
 }
 
 section.recent div.center h2
@@ -585,3 +607,85 @@ section.recent div.All_images .right .close > div:nth-of-type(2) img
 {
   display: none;
 }*/
+/*_______________________________________________________*/
+
+/*footer*/
+
+footer
+{
+  height: 200px;
+  width: 100%;
+  /*padding-top: 20px;*/
+  /*background: rgba(0, 0, 0, 0.4);*/
+  background: black;
+  color: #fff;
+  position: relative;
+}
+
+ /*should the above work correctly and delete the lower one*/
+
+footer div.info
+{
+  height: 200px;
+  width: 100%;
+  /*padding-top: 20px;*/
+  /*background: rgba(0, 0, 0, 0.4);*/
+  background: black;
+  color: #fff;
+  position: relative;
+}
+
+footer div.info
+{
+  width: 22%;
+  margin-left: 2%;
+  float: left;
+
+}
+
+footer div.info a
+{
+  text-decoration: none;
+  display: block;
+  color: #fff;
+  line-height: 2.5;
+}
+
+/*footer div.info p
+{
+  line-height: 2.5;
+  margin-bottom: 7%;
+}*/
+
+footer div.info h3
+{
+  margin-bottom: 7%;
+}
+
+footer div.info input
+{
+  display: block;
+  background: none;
+  padding: 7px;
+  margin-bottom: 1.5%;
+}
+
+footer div.info input[type=email] ,
+footer div.info input[type=text]
+{
+  border: 1px solid #888;
+}
+
+footer div.info input[type=submit]
+{
+  border: 1px solid #888;
+}
+
+footer .footer2
+{
+  width: 100%;
+  height: 70px;
+  background: #888;
+  position: absolute;
+  bottom: 0;
+}
