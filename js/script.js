@@ -5,6 +5,16 @@ var firstResult=true;
 // _______________
 
 $(document).ready(function (){
+	$(document).scroll(function(e) {
+		var scrolledHeight = $(document).scrollTop();
+		var notTriggered = true;
+
+		if (scrolledHeight >= 2125 && notTriggered) {
+			$('.timer').countTo();
+			notTriggered = false;
+		}
+	})
+
 
 // $(function(){
 //   $('div.joined img').mousemove(function(){
