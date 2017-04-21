@@ -169,7 +169,7 @@ section.personal .welcome p span         /*حتى اخلي :) تفتر من اح
   font-weight: bold;
 }
 
-section.personal div.welcome p:last-child:hover span
+section.personal div.welcome p:hover span
 {
 /* transition: all 0.5s ease-in-out; */      /*اذا اريد اخلي :) تفتر من احط الماوس على السبان فقط*/
   display: inline-block;

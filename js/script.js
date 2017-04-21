@@ -1,26 +1,9 @@
-// youtube
-var url="https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCh9hQ6K3jTCyBFk68WZtNoxob_3PW_kn4&maxResults=3&q="
-var nextPage=''
-var firstResult=true;
-// _______________
-
 $(document).ready(function (){
-	$(document).scroll(function(e) {
-		var scrolledHeight = $(document).scrollTop();
-		var notTriggered = true;
-
-		if (scrolledHeight >= 2125 && notTriggered) {
-			$('.timer').countTo();
-			notTriggered = false;
-		}
-	})
 
 
-// $(function(){
-//   $('div.joined img').mousemove(function(){
-//     $('.overlay').hide();
-//   });
-// });
+// ____________________________________
+// Solutions
+
     $('.first').click(function(){
       $('.one').show();
       $('.two').hide();
@@ -30,17 +13,11 @@ $(document).ready(function (){
       $('.two').show();
       $('.one').hide();
     });
-
-// code below doesn't work instead the code above
-    //   $('.first'.click(function(){
-    //     $('.one').show().siblings().hide();
-    //   });
-    //
-    //   $('.second'.click(function(){
-    //     $('.two').show().siblings().hide();
-    // });
+// ____________________________________
 
 
+// ____________________________________
+// Sliding navbar
 
   $(window).scroll(function(){
     var scroll = $(this).scrollTop();
@@ -53,98 +30,55 @@ $(document).ready(function (){
       $('.clearfix.header').slideUp();
     }
   });
+// ____________________________________
 
 
-
-
+// _____________________________________
 // Wikipedia Api
-    // $(function() {
-    //
-    //     $("#searchTerm").keypress(function(e){
-    //       if(e.keyCode===13){
-    //
-    //         var searchTerm = $("#searchTerm").val();
-    //         var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+ searchTerm +"&format=json&callback=?";
-    //             $.ajax({
-    //                 url: url,
-    //                 type: 'GET',
-    //                 dataType: "json",
-    //           success: function(data) {
-    //             for(var i=0; i<data[1].length; i++){
-    //               $("#output").prepend("<div><div class='well'><a href="+data[3][i]+"><h2>" + data[1][i]+ "</h2>" + "<p>" + data[2][i] + "</p></a></div></div>");
-    //             }
-    //           }
-    //     })
-    //       }
-    //
-    //     });
-    //
-    // // click ajax call
-    //     $("#search").on("click", function() {
-    //       var searchTerm = $("#searchTerm").val();
-    //     var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+ searchTerm +"&format=json&callback=?";
-    //         $.ajax({
-    //           url: url,
-    //           type: 'GET',
-    //           dataType: "json",
-    //           success: function(data) {
-    //             $("#output").html();
-    //             for(var i=0;i<data[1].length;i++){
-    //               $("#output").prepend("<div><div class='well'><a href="+data[3][i]+"><h2>" + data[1][i]+ "</h2>" + "<p>" + data[2][i] + "</p></a></div></div>");
-    //             }
-    //
-    //           }
-    //     })
-    //     });
-    //
-    // });
 
+runSearch();
 
-
-
-
-
-	runSearch();
-
-	function runSearch(){
+function runSearch(){
         $("#searchTerm").keypress(function(e){
-        	if ( e.keyCode === 13 ) {
-            	getInput();
-            	clearInput();
-          	} else {
-                $("#search").on("click", getInput())
-          	}
-		})
-	}
+          if(e.keyCode==13){
+            getInput();
+            clearInput();
+          }
+          else {
+                  $("#search").on("click", getInput())
+          }
+}
+                                  )}
+                                  
+ function getInput(){
+                  var searchTerm = $("#searchTerm").val();
+          request(searchTerm);
+        }
 
-	function getInput(){
-		var searchTerm = $("#searchTerm").val();
-        request(searchTerm);
-    }
+function clearInput(){
+  // var searchTerm = $('#searchTerm').val('');
+  var searchTerm = $('#searchTerm').empty();
+}
 
-	function clearInput(){
-  		var searchTerm = $("#searchTerm").val();
-  		searchTerm = (""); // searchTerm.html('');
-	}
 
-	function request(searchTerm){
-        var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+ searchTerm +"&format=json&callback=?";
-		$.ajax({
-            url: url,
-			type: 'GET',
-			dataType: "json",
+function request(searchTerm){
+            var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+ searchTerm +"&format=json&callback=?";
+              $.ajax({
+                  url: url,
+                  type: 'GET',
+                  dataType: "json",
             success: function(data) {
-            	for (var i=0; i<data[1].length; i++) {
-                	$("#output").prepend("<div><div class='well'><a href="+data[3][i]+"><h2>" + data[1][i]+ "</h2>" + "<p>" + data[2][i] + "</p></a></div></div>");
-				}
-            }
-        });
-	};
+              for(var i=0; i<data[1].length; i++){
+                $("#output").prepend("<div><div class='well'><a href="+data[3][i]+"><h2>" + data[1][i]+ "</h2>" + "<p>" + data[2][i] + "</p></a></div></div>");
+}
+              }
+              }
+                    ) };
+// ________________________________________
 
 
-
-
-// ------------------
+// ________________________________________
+// Muataz Aziz coloring trick
 
 function initiateBouncing() {
 	var myName = "Muataz Aziz";
@@ -168,29 +102,11 @@ function initiateBouncing() {
 }
 
 initiateBouncing();
-// __________________________
+// ________________________________________
 
 
-//failed try to make PERSONAL WEBSITE multi-colored in jquery
-//   var test = $("section.personal .logo").text().split('');
-//
-//     var result = "";
-//     var i = 0;
-//     for(i=0; i < test.length; i++) {
-//         result += "<span style='color:"+getColor()+"'>"+test[i]+"</span>";
-//     }
-//     $("section.personal .logo").html(result);
-//
-//
-// function getColor() {
-//     var colList = ['red', 'blue','green'];
-//
-//     var i = Math.floor((Math.random()*colList.length));
-//   return colList[i];
-// }​
-
-// __________________________
-
+// ________________________________________
+// Solutions sliding up/down
 
 	$(".one").css('display','block');
 
@@ -198,31 +114,58 @@ initiateBouncing();
 		$(this).next().slideToggle();
 		$("div.acordion p").not($(this).next()).slideUp();
 	});
-// __________________________
+// ________________________________________
 
-console.log("ORGANIZE YOUR CODE");
 
+// ________________________________________
+// timer/counter library
 
 	$('.download').click(function(e){
-		// console.log(e)
 		$('.timer').countTo();
 	});
-// __________________________
-	
+// ________________________________________
+
+// ________________________________________
+// study counter starts from certain hieght
+
+	$(document).scroll(function(e) {
+		var scrolledHeight = $(document).scrollTop();
+		var notTriggered = true;
+
+		if (scrolledHeight >= 2125 && notTriggered) {
+			$('.timer').countTo();
+			notTriggered = false;
+		}
+	})
+// _______________________________________
+
+
+// ________________________________________
+// fancybox library of recent
 
 	$('.All_images').mixItUp();
-// __________________________
+// ________________________________________
 
+
+// ________________________________________
+// nice scroll
 
 // $("html").niceScroll({
 // 	cursorcolor: "brown",
 // 	cursoropacitymin: 0.5
 // });
+// ________________________________________
 
 
-
-//---------------------
+// ________________________________________
 // youtube
+
+var url="https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCh9hQ6K3jTCyBFk68WZtNoxob_3PW_kn4&maxResults=3&q="
+var nextPage=''
+var firstResult=true;
+
+
+
 function bindLinkClick(){
 	$('#searchLink').click(function(e){
 		firstResult=true;
@@ -291,8 +234,9 @@ function bindLoadMoreClick(){
 		fetchData();
 	})
 }
+// ________________________________________
 
-// _________
+
 
 var url="https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCh9hQ6K3jTCyBFk68WZtNoxob_3PW_kn4&maxResults=1"
 var nextPage;
@@ -350,9 +294,103 @@ function makeAJaxRequest(){
 		fail: function(){alert('Error!')}
 	})
 }
+// ________________________________________
 
 
+// ________________________________________
+// Twitter for Websites
 
+window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));
+// ________________________________________
 
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+// Wikipedia Api(another way)
+    // $(function() {
+    //
+    //     $("#searchTerm").keypress(function(e){
+    //       if(e.keyCode===13){
+    //
+    //         var searchTerm = $("#searchTerm").val();
+    //         var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+ searchTerm +"&format=json&callback=?";
+    //             $.ajax({
+    //                 url: url,
+    //                 type: 'GET',
+    //                 dataType: "json",
+    //           success: function(data) {
+    //             for(var i=0; i<data[1].length; i++){
+    //               $("#output").prepend("<div><div class='well'><a href="+data[3][i]+"><h2>" + data[1][i]+ "</h2>" + "<p>" + data[2][i] + "</p></a></div></div>");
+    //             }
+    //           }
+    //     })
+    //       }
+    //
+    //     });
+    //
+    // // click ajax call
+    //     $("#search").on("click", function() {
+    //       var searchTerm = $("#searchTerm").val();
+    //     var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+ searchTerm +"&format=json&callback=?";
+    //         $.ajax({
+    //           url: url,
+    //           type: 'GET',
+    //           dataType: "json",
+    //           success: function(data) {
+    //             $("#output").html();
+    //             for(var i=0;i<data[1].length;i++){
+    //               $("#output").prepend("<div><div class='well'><a href="+data[3][i]+"><h2>" + data[1][i]+ "</h2>" + "<p>" + data[2][i] + "</p></a></div></div>");
+    //             }
+    //
+    //           }
+    //     })
+    //     });
+    //
+    // });
+
+
+
+
+//failed try to make PERSONAL WEBSITE multi-colored in jquery
+//   var test = $("section.personal .logo").text().split('');
+//
+//     var result = "";
+//     var i = 0;
+//     for(i=0; i < test.length; i++) {
+//         result += "<span style='color:"+getColor()+"'>"+test[i]+"</span>";
+//     }
+//     $("section.personal .logo").html(result);
+//
+//
+// function getColor() {
+//     var colList = ['red', 'blue','green'];
+//
+//     var i = Math.floor((Math.random()*colList.length));
+//   return colList[i];
+// }​
