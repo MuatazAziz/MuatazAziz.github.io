@@ -55,7 +55,8 @@
           <canvas id="myCanvas"></canvas>
           <!-- <div class="container"> -->
             <p>Love to code  <span>:)</span></p>
-            <a class="twitter-follow-button" href="https://twitter.com/MuatazAziz"></a>
+            <a class="twitter-follow-button" href="https://twitter.com/MuatazAziz"></a> <!-- Twitter button -->
+            <!-- data-show-count="false" data-show-screen-name="false" --> <!-- Button customization -->
           <!-- </div> -->
           <!-- <p>I am Muataz Aziz<br>
             This is my personal website <br>
@@ -322,6 +323,102 @@
     <a href="http://browsehappy.com/?locale=en">upgrade your browser</a>
 </audio> -->
   <!-- ____________________________________________ -->
+
+
+
+
+  <a class="twitter-timeline"  href="https://twitter.com/search?q=%E2%80%8E%40IraqReCoded%E2%80%8F" data-widget-id="855405758757969920">@IraqReCoded‏</a>
+  
+
+<a class="twitter-timeline"
+  href="https://twitter.com/IraqReCoded"
+  data-width="300"
+  data-height="600">
+Tweets by @IraqReCoded
+</a>
+
+
+<!-- <h1>NEW TWEETS</h1>
+<ol id="tweets"></ol>
+<a href="#" id="submit">get tweets</a> -->
+
+
+
+
+
+<div class="container">
+  <h1>Twitter Sample</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Public Search:</h2>
+      <form id="getposts_form" role="form">
+        <div class="form-group">
+          <label for="Search">Search</label>
+          <input type="text" class="form-control" id="txtsearch" name="search" placeholder="(Enter search terms to search Tweets)">
+        </div>
+
+         <!-- TODO: add a dropdown for lang, and a dropdown for result_type here  -->
+         <div class="row">
+           <div class="col-md-6">
+             <label for="lang">language</label>
+             <select class="form-control" id="lang">
+               <option value="">Any</option>
+               <option value="en">English</option>
+               <option value="fr">French</option>
+               <option value="ar">Arabic</option>
+             </select>
+           </div>
+
+           <div class="col-md-6">
+             <label for="type">Result Type</label>
+             <select class="form-control" id="type">
+               <option value="">Any</option>
+               <option value="mixed">mixed</option>
+               <option value="recent">recent</option>
+               <option value="popular">popular</option>
+             </select>
+           </div>
+
+         </div>
+         <br>
+         <button class="btn btn-default" type="submit" id="submit">Submit</button>
+      </form>
+
+    </div>
+    <div class="col-md-6">
+    <h2>Results:</h2>
+    <div id="errors"></div>
+    <ul id="output" class="list-group"></ul>
+    <template id="tweet">
+      <li class="tweet list-group-item">
+        <!-- TODO: add badges HTML code for retweets and favorites here -->
+        <span class="user">{{user}}</span>
+        <span class="body">{{tweet}}</span>
+        <span class="retweets badge">{{retweets}}</span>
+        <span class="favorites badge">{{favorites}}</span>
+      </li>
+    </template>
+
+  </div>
+</div>
+<div class="modal" id="ajaxIndicator" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body" style="text-align: center;">
+        <p>Please wait ...</p>
+        <p> <img src="images/ajax-loader.gif"></p>
+      </div>
+      <!-- modal-content -->
+    </div>
+      <!-- modal-dialog -->
+  </div>
+  <!-- modal -->
+</div>
+
+
+
+
+
 
 
 <!-- footer -->

@@ -4,32 +4,32 @@ $(document).ready(function (){
 // ____________________________________
 // Solutions
 
-    $('.first').click(function(){
-      $('.one').show();
-      $('.two').hide();
-    });
+$('.first').click(function(){
+	$('.one').show();
+	$('.two').hide();
+});
 
-    $('.second').click(function(){
-      $('.two').show();
-      $('.one').hide();
-    });
+$('.second').click(function(){
+	$('.two').show();
+	$('.one').hide();
+});
 // ____________________________________
 
 
 // ____________________________________
 // Sliding navbar
 
-  $(window).scroll(function(){
-    var scroll = $(this).scrollTop();
-    if(scroll > 500)
-    {
-      $('.clearfix.header').slideDown();
-    }
-    else
-    {
-      $('.clearfix.header').slideUp();
-    }
-  });
+$(window).scroll(function(){
+	var scroll = $(this).scrollTop();
+	if(scroll > 500)
+	{
+		$('.clearfix.header').slideDown();
+	}
+	else
+	{
+		$('.clearfix.header').slideUp();
+	}
+});
 // ____________________________________
 
 
@@ -39,41 +39,41 @@ $(document).ready(function (){
 runSearch();
 
 function runSearch(){
-        $("#searchTerm").keypress(function(e){
-          if(e.keyCode==13){
-            getInput();
-            clearInput();
-          }
-          else {
-                  $("#search").on("click", getInput())
-          }
+	$("#searchTerm").keyup(function(e){			
+			getInput();
+			clearInput();		
+	})
+
+	$("#search").on("click",function(e){
+		getInput();
+		clearInput();
+	})
+
 }
-                                  )}
-                                  
- function getInput(){
-                  var searchTerm = $("#searchTerm").val();
-          request(searchTerm);
-        }
+
+function getInput(){
+	var searchTerm = $("#searchTerm").val();
+	request(searchTerm);
+}
 
 function clearInput(){
-  // var searchTerm = $('#searchTerm').val('');
-  var searchTerm = $('#searchTerm').empty();
+	$("#output").html('');
 }
 
 
 function request(searchTerm){
-            var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+ searchTerm +"&format=json&callback=?";
-              $.ajax({
-                  url: url,
-                  type: 'GET',
-                  dataType: "json",
-            success: function(data) {
-              for(var i=0; i<data[1].length; i++){
-                $("#output").prepend("<div><div class='well'><a href="+data[3][i]+"><h2>" + data[1][i]+ "</h2>" + "<p>" + data[2][i] + "</p></a></div></div>");
-}
-              }
-              }
-                    ) };
+	var url = "https://en.wikipedia.org/w/api.php?action=opensearch&search="+ searchTerm +"&format=json&callback=?";
+	$.ajax({
+		url: url,
+		type: 'GET',
+		dataType: "json",
+		success: function(data) {
+			for(var i=0; i<data[1].length; i++){
+				$("#output").prepend("<div><div class='well'><a href="+data[3][i]+"><h2>" + data[1][i]+ "</h2>" + "<p>" + data[2][i] + "</p></a></div></div>");
+			}
+		}
+	}
+	) };
 // ________________________________________
 
 
@@ -93,9 +93,9 @@ function initiateBouncing() {
 	drawName(myName, letterColors);
 
 	if (10 < 3) {
-	    bubbleShape = 'square';
+		bubbleShape = 'square';
 	} else {
-	    bubbleShape = 'circle';
+		bubbleShape = 'circle';
 	}
 
 	bounceBubbles();
@@ -108,42 +108,42 @@ initiateBouncing();
 // ________________________________________
 // Solutions sliding up/down
 
-	$(".one").css('display','block');
+$(".one").css('display','block');
 
-	$('div.acordion h3').click(function(){
-		$(this).next().slideToggle();
-		$("div.acordion p").not($(this).next()).slideUp();
-	});
+$('div.acordion h3').click(function(){
+	$(this).next().slideToggle();
+	$("div.acordion p").not($(this).next()).slideUp();
+});
 // ________________________________________
 
 
 // ________________________________________
 // timer/counter library
 
-	$('.download').click(function(e){
-		$('.timer').countTo();
-	});
+$('.download').click(function(e){
+	$('.timer').countTo();
+});
 // ________________________________________
 
 // ________________________________________
 // study counter starts from certain hieght
 
-	$(document).scroll(function(e) {
-		var scrolledHeight = $(document).scrollTop();
-		var notTriggered = true;
+$(document).scroll(function(e) {
+	var scrolledHeight = $(document).scrollTop();
+	var notTriggered = true;
 
-		if (scrolledHeight >= 2125 && notTriggered) {
-			$('.timer').countTo();
-			notTriggered = false;
-		}
-	})
+	if (scrolledHeight >= 2125 && notTriggered) {
+		$('.timer').countTo();
+		notTriggered = false;
+	}
+})
 // _______________________________________
 
 
 // ________________________________________
 // fancybox library of recent
 
-	$('.All_images').mixItUp();
+$('.All_images').mixItUp();
 // ________________________________________
 
 
@@ -301,22 +301,125 @@ function makeAJaxRequest(){
 // Twitter for Websites
 
 window.twttr = (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0],
-    t = window.twttr || {};
-  if (d.getElementById(id)) return t;
-  js = d.createElement(s);
-  js.id = id;
-  js.src = "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
+	var js, fjs = d.getElementsByTagName(s)[0],
+	t = window.twttr || {};
+	if (d.getElementById(id)) return t;
+	js = d.createElement(s);
+	js.id = id;
+	js.src = "https://platform.twitter.com/widgets.js";
+	fjs.parentNode.insertBefore(js, fjs);
 
-  t._e = [];
-  t.ready = function(f) {
-    t._e.push(f);
-  };
+	t._e = [];
+	t.ready = function(f) {
+		t._e.push(f);
+	};
 
-  return t;
+	return t;
 }(document, "script", "twitter-wjs"));
 // ________________________________________
+
+
+// ________________________________________
+//Twitter API
+
+//disable hidding the AJAX loading modal that pops up when searching
+var allowAjaxHide = false;
+var hideFunction = function(event) {
+	if (!allowAjaxHide) {
+		event.preventDefault();
+	}
+	allowAjaxHide = false;
+};
+$('#ajaxIndicator').on('hide.bs.modal', hideFunction);
+
+//perform a Twitter search when the "public search" form is submitted
+$('#getposts_form').submit(function(event){
+	event.preventDefault();
+
+	//clear out our output areas first!
+	$('#output').empty();
+	$('#errors').empty();
+
+	var search = $("#txtsearch").val();
+	var language = $("#lang").val();
+	var resulttype = $("#type").val();
+	console.log(search);
+	console.log(language);
+	console.log(resulttype);
+
+	//validate all form input, as needed
+	var errorMessages = '';
+	var emptyStringpattern = /^\s*$/;
+
+	if (emptyStringpattern.test(search)) {
+		errorMessages +='You must enter enter a search term.';
+	}
+
+	if (errorMessages.length > 0) {
+		//When there are any validation errors, quit before the ajax call is made
+		$("#errors").text(errorMessages);
+		return;
+	}
+
+	//make the ajax request
+	$.ajax({
+		// url: 'https://api/index.php/TwitterAppOnly/search/tweets.json',
+		url: 'https://api.twitter.com/1.1/search/tweets.json',
+		data: {
+			q: search,
+			lang: language,
+			result_type: resulttype,
+		},
+		success: function (serverResponse) {
+			try{
+				console.log(serverResponse);
+				var statuses = serverResponse.statuses;
+				for (var i = 0; i < statuses.length; i++) {
+					var tweet = statuses[i];
+					//get the template and copy it
+					var template = $($("#tweet").prop("content")).children().clone();
+
+					//fill in the data
+					template.find(".body").text(tweet.text);
+					template.find(".user").text('@' + tweet.user.screen_name);
+					template.find(".favorites").text(tweet.favorite_count);
+					template.find(".retweets").text(tweet.retweet_count);
+
+					$("#output").append(template);
+				}
+			}
+			catch (ex) {
+				console.error(ex);
+				$("#errors").text("An error occurred processing the data from Twitter");
+			}
+		},
+		error: function(jqXHR, textStatus, errorThrown) {
+			//Since our script runs on Cloud9, let's make
+			// a friendlier error message for ourselves
+
+			//TODO: make this output to the "errors" div instead of an alert
+			if (errorThrown == 'Service Unavailable') {
+				$("#errors").text("Your cloud 9 instance isn't running!");
+			}
+			else{
+				$("#errors").text('An unknown error occurred: ' + errorThrown);
+			}
+		},
+		complete: function() {
+			//remove the "let user know something is happening" thing, since the request is done
+			allowAjaxHide = true;
+			$("#ajaxIndicator").modal('hide');
+		}
+	});
+
+	//let the user know something is happening in the meantime
+	$("#ajaxIndicator").modal('show');
+
+});
+// ________________________________________
+
+
+
 
 
 });
@@ -394,3 +497,38 @@ window.twttr = (function(d, s, id) {
 //     var i = Math.floor((Math.random()*colList.length));
 //   return colList[i];
 // }​
+
+
+
+
+
+
+
+// failed Twitter API
+// $("#submit").click(function(){
+// 	var search_term = {
+// 		q: 'bowery'
+// 		search(search_term);
+// 	};
+// });
+// function search(search_term) {
+// 	console.log('searching for ');
+// 	console.dir(search_term);
+// 	$.ajax({
+// 		url: "https://api.twitter.com/1.1/search/tweets.json?" + $.param(search_term),
+// 		dataType: 'jsonp',
+// 		success: function(data) {
+// 			for (item in data['results']) {
+// 				$('#tweets').append(
+// 					'<li>' + data['results'] [item] ['text'] + '</li>'
+// 					);
+// 			}
+// 		}
+// 	});
+// }
+
+
+
+
+
+// !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
